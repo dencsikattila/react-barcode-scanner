@@ -4,10 +4,23 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/react-barcode-scanner/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <title>Vite + React + TS</title>
-    <script type="module" crossorigin src="/react-barcode-scanner/assets/index-DkbcaFPx.js"></script>
+    <script type="module" crossorigin src="/react-barcode-scanner/assets/index-9eOxUhbx.js"></script>
   </head>
   <body>
     <div id="root"></div>
+    <div style="width: 500px" id="reader"></div>
   </body>
+  <script>
+    var html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 10, qrbox: 250 });
+
+    function onScanSuccess(decodedText, decodedResult) {
+      console.log(`Scan result: ${decodedText}`, decodedResult);
+      window.alert(decodedText);
+    }
+
+    html5QrcodeScanner.render(onScanSuccess);
+  </script>
 </html>
